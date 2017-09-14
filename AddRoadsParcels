@@ -1,0 +1,10 @@
+from qgis.core import *
+
+# Add county roads from file on computer
+roads = QgsVectorLayer('C:/GIS Files/Roads__All/Roads__All_EPSG102645.shp', 'Roads SLOCO', 'ogr')
+QgsMapLayerRegistry.instance().addMapLayer(roads)
+
+# Add county parcels fromfile on computer
+parcels = QgsVectorLayer('C:/GIS Files/SLO_Parcels_ParcelQuest/SLO_Parcels_EPSG102645.shp', 'Parcels SLOCO', 'ogr')
+QgsMapLayerRegistry.instance().addMapLayer(parcels)
+
