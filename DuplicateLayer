@@ -1,0 +1,12 @@
+layer = QgsVectorLayer("path/to/layer", "polygon", "ogr")
+feats = [feat for feat in layer.getFeatures()]
+
+mem_layer = QgsVectorLayer("Polygon?crs=epsg:4326", "duplicated_layer", "memory")
+
+mem_layer_data = mem_layer.dataProvider()
+attr = layer.dataProvider().fields().toList()
+mem_layer_data.addAttributes(attr)
+mem_layer.updateFields()
+mem_layer_data.addFeatures(feats)
+
+QgsMapLayerRegistry.instance().addMapLayer(mem_layer)
