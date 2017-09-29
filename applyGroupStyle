@@ -1,0 +1,22 @@
+from qgis.core import *
+import os
+#copy line 9-21 and change file names and group names if you have more groups
+
+QML_file = ('*.qml')#insert path to qml file 
+#add other qml files if you want to change style for more groups
+
+
+def applystyle_group(name):
+    root = QgsProject.instance().layerTreeRoot()
+    point = root.findGroup(name) #Find Group
+    for child in point.children():
+        if isinstance(child, QgsLayerTreeLayer):
+            if child.layer().type()==0:
+                child.layer().loadNamedStyle(QML_file)#change the file name accordingly
+                #you can add styles for other types of layers in the same group (line, point and polygon)
+                
+try: #If group is not present this will keep script running if you want to add more
+    applystyle_group("*")#insert name of QGIS group
+except Exception:
+    pass
+    
