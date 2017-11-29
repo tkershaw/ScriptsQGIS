@@ -1,0 +1,22 @@
+## Adds points on the current canvas
+
+layer = QgsVectorLayer('Point?crs=epsg:102645', 'points', 'memory')
+pr = layer.dataProvider()
+
+#Add first point
+pt = QgsFeature()
+point1 = QgsPoint(5746148.256,2294276.174)
+pt.setGeometry(QgsGeometry.fromPoint(point1))
+pr.addFeatures([pt])
+#Update the extent of the layer
+layer.updateExtents()
+
+#Add second point
+pt = QgsFeature()
+point2 = QgsPoint(5763624.419,2288231.164)
+pt.setGeometry(QgsGeometry.fromPoint(point2))
+pr.addFeatures([pt])
+layer.updateExtents()
+
+#Add the layer to the canvas
+QgsMapLayerRegistry.instance().addMapLayers([layer])
