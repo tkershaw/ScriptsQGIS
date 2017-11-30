@@ -1,0 +1,19 @@
+import os
+from qgis.core import *
+from qgis.utils import iface
+
+#Get filepath
+myfilepath= iface.activeLayer().dataProvider().dataSourceUri()
+
+#Take the |layeris=0 off the end of the path
+myfilepath = myfilepath [:myfilepath.rfind('|')]
+myfilepath
+
+#Split the directory and the filename
+(myDirectory,nameFile) = os.path.split(myfilepath)
+myDirectory
+nameFile
+
+#Another way (Doesnt actually work)
+#myfilepath2= os.path.dirname( unicode( qgis.utils.iface.activeLayer().dataProvider().dataSourceUri() ) ) ;
+#fic = myfilepath2 + "[% "FILE" %]"
