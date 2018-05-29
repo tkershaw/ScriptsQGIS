@@ -1,0 +1,2 @@
+from PyQt4.QtCore import QSettings
+QSettings().remove('UI/recentProjects/2') //*enter the number after looking up in Options > Advanced > UI > recentProjects
